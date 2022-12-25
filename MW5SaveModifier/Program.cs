@@ -8,49 +8,43 @@ Console.Write("Drag save file here: ");
 path = Console.ReadLine();
 
 int hexIn;
-String hex = "";
 String file = "";
-int j = 0;
 long fileSize = new FileInfo(path).Length;
-const string startOfItem = "496e7450726f7065727479";
+const string START_OF_ITEM_LOCATION = "496e7450726f7065727479";
 
 
 
 using (FileStream fsSource = new FileStream(path,
            FileMode.Open, FileAccess.ReadWrite))
 {
-
-    // Read the source file into a byte array.
-    byte[] bytez = new byte[fsSource.Length];
+    byte[] bytes = new byte[fsSource.Length];
     int numBytesToRead = (int)fsSource.Length;
     int numBytesRead = 0;
     while (numBytesToRead > 0)
     {
-        // Read may return anything from 0 to numBytesToRead.
-        int n = fsSource.Read(bytez, numBytesRead, numBytesToRead);
+        int n = fsSource.Read(bytes, numBytesRead, numBytesToRead);
 
-        // Break when the end of the file is reached.
         if (n == 0)
             break;
 
         numBytesRead += n;
         numBytesToRead -= n;
     }
-    numBytesToRead = bytez.Length;
+    numBytesToRead = bytes.Length;
 
 
-    file = Convert.ToHexString(bytez, 0, numBytesRead);
+    file = Convert.ToHexString(bytes, 0, numBytesRead);
 }
 
 file = file.ToLower();
 
 
-    List<int> indexes = AllIndexesOf(file, startOfItem);
+List<int> indexes = AllIndexesOf(file, START_OF_ITEM_LOCATION);
 
-foreach(int i in indexes)
+foreach (int i in indexes)
 {
 
-    for(int k = 42; k < 46; k++)
+    for (int k = 42; k < 46; k++)
     {
         Console.Write(file[i + k]);
     }
@@ -68,8 +62,8 @@ foreach (int i in indexes)
 
 string newFile = new string(charFile);
 
-byte[] bytes = ConvertHexToByteArray(newFile);
-File.WriteAllBytes(path + ".EDITED", bytes);
+byte[] writeBytes = ConvertHexToByteArray(newFile);
+File.WriteAllBytes(path + ".EDITED", writeBytes);
 
 
 
