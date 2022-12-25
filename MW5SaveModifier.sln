@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MW5SaveModifier", "MW5SaveModifier\MW5SaveModifier.csproj", "{C3EF8A3C-1AAF-4999-B017-D49C591D2B2B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3EF8A3C-1AAF-4999-B017-D49C591D2B2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3EF8A3C-1AAF-4999-B017-D49C591D2B2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3EF8A3C-1AAF-4999-B017-D49C591D2B2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3EF8A3C-1AAF-4999-B017-D49C591D2B2B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F0C9BA74-3030-4C0D-B8F3-F9601069FC74}
+	EndGlobalSection
+EndGlobal
