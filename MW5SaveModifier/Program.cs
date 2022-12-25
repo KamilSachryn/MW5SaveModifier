@@ -1,32 +1,20 @@
 ﻿
 
-using System.Collections;
 using System.Globalization;
-using System;
 
-string path = @"C:\Users\INFINITY\AppData\Local\MW5Mercs\Saved\SaveGames\A8C18C9E4DFCB97BAE7754897D1F322A\6CB630CE45E03BDB64DA3C9714794606.sav.bak";
-string output = @"C:\Users\INFINITY\AppData\Local\MW5Mercs\Saved\SaveGames\A8C18C9E4DFCB97BAE7754897D1F322A\6CB630CE45E03BDB64DA3C9714794606.sav";
+string path = @"";
 
 Console.Write("Drag save file here: ");
 path = Console.ReadLine();
-//path = @"C:\Users\INFINITY\Desktop\aaa.sav";
-//FileStream fs = new FileStream(path, FileMode.Open);
 
 int hexIn;
 String hex = "";
 String file = "";
 int j = 0;
 long fileSize = new FileInfo(path).Length;
+const string startOfItem = "496e7450726f7065727479";
 
-/*
-for (int i = 0; (hexIn = fs.ReadByte()) != -1; i++)
-{
-    hex = string.Format("{0:X2}", hexIn);
-    file += hex.ToLower();
-    if(i % 10000 == 0) Console.WriteLine((float)i / fileSize);
-    //if (j++ > 500000) break;
-}
-*/
+
 
 using (FileStream fsSource = new FileStream(path,
            FileMode.Open, FileAccess.ReadWrite))
@@ -57,7 +45,7 @@ using (FileStream fsSource = new FileStream(path,
 file = file.ToLower();
 
 
-    List<int> indexes = AllIndexesOf(file, "496e7450726f7065727479");
+    List<int> indexes = AllIndexesOf(file, startOfItem);
 
 foreach(int i in indexes)
 {
@@ -81,7 +69,7 @@ foreach (int i in indexes)
 string newFile = new string(charFile);
 
 byte[] bytes = ConvertHexToByteArray(newFile);
-File.WriteAllBytes(output + ".EDITED", bytes);
+File.WriteAllBytes(path + ".EDITED", bytes);
 
 
 
